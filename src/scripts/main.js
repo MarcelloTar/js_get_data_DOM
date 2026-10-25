@@ -1,12 +1,15 @@
 'use strict';
 
 // write your code here
-const allPopulatinTag = document.querySelectorAll('.population')
+const allPopulatinTag = document.querySelectorAll('.population');
+const totalPopulation = document.querySelector('.total-population');
+const averagePopulation = document.querySelector('.average-population');
 
 const total = [...allPopulatinTag].reduce((sum, item) => {
-  item = Number(item.textContent.replaceAll(',', ''))
-  return sum + item
-}, 0)
+  return sum + Number(item.textContent.replaceAll(',', ''));
+}, 0);
 
-document.querySelector('.total-population').textContent = total.toLocaleString('en-US')
-document.querySelector('.average-population').textContent = (total / allPopulatinTag.length).toLocaleString('en-US')
+const medium = total / allPopulatinTag.length;
+
+totalPopulation.textContent = total.toLocaleString('en-US');
+averagePopulation.textContent = medium.toLocaleString('en-US');
